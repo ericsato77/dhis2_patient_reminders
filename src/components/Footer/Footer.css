@@ -1,0 +1,13 @@
+.footer {
+    background-color: #f0f0f0; /* Adjust color to match the previous style */
+    text-align: center;
+    padding: 10px;
+    font-size: 14px;
+    color: #333; /* Choose a color that matches the previous theme */
+    border-top: 1px solid #ccc; /* Optional for a subtle separation */
+  }
+  
+  .footer p {
+    margin: 0;
+  }
+  
