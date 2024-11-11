@@ -8,7 +8,8 @@ const Home = () => {
 
    "A platform to manage patient care <br/>
    and reminders efficiently within DHIS2,<br/>
-  enhancing patient engagement and reducing missed appointments."
+  enhancing patient engagement <br/>
+  and reducing missed appointments."
 
     </div>
   )
