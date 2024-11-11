@@ -22,7 +22,7 @@ const App = () => {
           
         </Routes>
       </BrowserRouter>
-      <Footer></Footer>
+      <Footer className="footer"></Footer>
     </div>
   );
 };
