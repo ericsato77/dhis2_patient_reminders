@@ -7,7 +7,7 @@
     align-items: center;
     justify-content: center;
     gap: 100px; /* Space between links */
-    max-width: 1000px; /* Limit width of navbar */
+    max-width: 1000px; /* width of navbar */
     margin: 0 auto; /* Center the navbar */
 
     
