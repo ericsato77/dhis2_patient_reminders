@@ -1,9 +1,29 @@
-import React from 'react'
-
+import React from "react";
+import Home from "./components/Landingpage/Home";
+import Enroll from "./components/EnrollPatient/Enroll";
+import Appointment from "./components/ViewAppointments/Appointment";
+import EnrolledPatients from "./components/ViewEnrolledPatients/EnrolledPatients";
+import NavBar from "./components/NavigationBar/NavBar";
+import Footer from "./components/Footer/Footer";
+import  "./App.css"
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 const App = () => {
   return (
-    <div>WElcome to DHIS2 Patient reminders-GROUP-4</div>
-  )
-}
+    <div className="container">
+      <BrowserRouter>
+      <NavBar></NavBar>
+        <Routes>
+          <Route path="/" element={<Home></Home>}></Route>
+          <Route
+            path="/enroll"
+            element={<EnrolledPatients></EnrolledPatients>}
+          ></Route>
+          <Route path="/" element={<Home></Home>}></Route>
+          <Route path="/Footer" element={<Footer></Footer>}></Route>
+        </Routes>
+      </BrowserRouter>
+    </div>
+  );
+};
 
-export default App
+export default App;
