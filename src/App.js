@@ -1,8 +1,33 @@
-import { useDataQuery } from '@dhis2/app-runtime'
-import i18n from '@dhis2/d2-i18n'
-import React from 'react'
-import classes from './App.module.css'
+import React from "react";
+import Home from "./components/Landingpage/Home";
+import Enroll from "./components/EnrollPatient/Enroll";
+import Appointment from "./components/ViewAppointments/Appointment";
+import EnrolledPatients from "./components/ViewEnrolledPatients/EnrolledPatients";
+import NavBar from "./components/NavigationBar/NavBar";
+import Footer from "./components/Footer/Footer";
+import  "./App.css"
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+const App = () => {
+  return (
+    <div className="container">
+      <BrowserRouter>
+      <NavBar></NavBar>
+        <Routes>
+          <Route path="/" element={<Home></Home>}></Route>
+          <Route
+            path="/enroll"
+            element={<EnrolledPatients></EnrolledPatients>}
+          ></Route>
+          <Route path="/" element={<Home></Home>}></Route>
+          
+        </Routes>
+      </BrowserRouter>
+      <Footer className="footer"></Footer>
+    </div>
+  );
+};
 
+<<<<<<< HEAD
 
 const query = {
     me: {
@@ -34,3 +59,6 @@ const MyApp = () => {
 }
 
 export default MyApp
+=======
+export default App;
+>>>>>>> 07898451cb2340c7e4e487f5011359ee6de32e98
