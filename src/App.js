@@ -6,7 +6,6 @@ import EnrolledPatients from "./components/ViewEnrolledPatients/EnrolledPatients
 import NavBar from "./components/NavigationBar/NavBar";
 import Footer from "./components/Footer/Footer";
 import  "./App.css"
-import "./Footer.css"
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 const App = () => {
   return (
