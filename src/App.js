@@ -19,9 +19,10 @@ const App = () => {
             element={<EnrolledPatients></EnrolledPatients>}
           ></Route>
           <Route path="/" element={<Home></Home>}></Route>
-          <Footer></Footer>
+          
         </Routes>
       </BrowserRouter>
+      <Footer></Footer>
     </div>
   );
 };
