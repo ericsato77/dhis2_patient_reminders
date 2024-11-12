@@ -26,9 +26,10 @@ function Enroll() {
     ];
 
     const programOptions = [
-        { value: 'program1', label: 'Program 1' },
-        { value: 'program2', label: 'Program 2' },
-        { value: 'program3', label: 'Program 3' },
+        { value: 'program1', label: 'Maternal Program' },
+        { value: 'program2', label: 'HIV Program' },
+        { value: 'program3', label: 'TB Program' },
+        { value: 'program4', label: 'Malaria Program' },
     ];
 
     function handleInputChange(event) {

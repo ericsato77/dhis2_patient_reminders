@@ -4,12 +4,12 @@
 .form-container {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 10px;
-    width: 50vw; /* Make the form take up 50% of the screen width */
-    height: 50vh; /* Make the form take up 50% of the screen height */
+    gap: 15px;
+    width: 70vw; /* Make the form take up 50% of the screen width */
+    height: 70vh; /* Make the form take up 50% of the screen height */
     margin: auto;
-    background-color: #1e3ba3;
-    padding: 20px;
+    background-color: #2d4472;
+    padding: 40px;
     border-radius: 10px;
     color: white;
     overflow: auto; /* Prevent overflow if the content is too large */
@@ -19,6 +19,8 @@
 .form-header {
     grid-column: span 2;
     text-align: center;
+    font-size: xx-large;
+    padding: 0.000002%;
 }
 
 /* Form group (for label and input) */
@@ -37,6 +39,7 @@
     border-radius: 5px;
     cursor: pointer;
     text-align: center;
+    font-weight: bold;
 }
 
 /* Input and select fields (common styles) */
@@ -46,6 +49,7 @@
     border: 1px solid #ccc;
     border-radius: 4px;
     font-size: 14px;
+    color: black;
 }
 
 /* Custom styles for form inputs */
