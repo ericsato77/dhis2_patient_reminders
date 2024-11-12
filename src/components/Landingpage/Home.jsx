@@ -2,8 +2,9 @@ import React from 'react'
 import "./Home.css"
 
 const Home = () => {
-    <hr/>
+
   return (
+    
     <div className='Home hometext' >
 
    "A platform to manage patient care <br/>
