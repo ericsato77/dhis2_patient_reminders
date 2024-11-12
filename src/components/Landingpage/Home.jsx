@@ -5,6 +5,7 @@ const Home = () => {
 
   return (
     
+
     <div className='Home hometext' >
 
    "A platform to manage patient care <br/>
