@@ -22,8 +22,7 @@ function Enroll() {
 
     const languageOptions = [
         { value: 'en', label: 'English' },
-        { value: 'fr', label: 'French' },
-        { value: 'es', label: 'Spanish' },
+        { value: 'fr', label: 'Chichewa' },
     ];
 
     const programOptions = [
@@ -75,7 +74,14 @@ function renderFormInput(label, name, value, onChange, type = "text") {
     return (
         <div className="form-group">
             <label>{label}</label>
-            <input type={type} name={name} value={value} onChange={onChange} required />
+            <input 
+                type={type} 
+                name={name} 
+                value={value} 
+                onChange={onChange} 
+                required 
+                className="input-field" 
+            />
         </div>
     );
 }
@@ -88,6 +94,7 @@ function renderFormSelect(label, name, options, value, onChange) {
                 options={options}
                 value={options.find(option => option.value === value)}
                 onChange={(option) => onChange(option, name)}
+                className="select-field"
                 placeholder={`Select ${label.toLowerCase()}`}
             />
         </div>
