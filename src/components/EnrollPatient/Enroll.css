@@ -1,0 +1,38 @@
+/* EnrollmentForm.css */
+
+/* Form container */
+.form-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+    max-width: 600px;
+    margin: auto;
+    background-color: #1e3ba3;
+    padding: 20px;
+    border-radius: 10px;
+    color: white;
+}
+
+/* Header */
+.form-header {
+    grid-column: span 2;
+    text-align: center;
+}
+
+/* Form group (for label and input) */
+.form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+/* Button style */
+.submit-button {
+    grid-column: span 2;
+    padding: 10px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-align: center;
+}

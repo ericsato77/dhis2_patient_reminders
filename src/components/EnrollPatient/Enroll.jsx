@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
-import Select from 'react';
+import Select from 'react-select';
+import './Enroll.css'; // Import the CSS file
 
-const Enroll = () => {
-    const [form, setForm] = useState({
+function Enroll() {
+    const [formData, setFormData] = useState({
         fullName: '',
         patientId: '',
         dob: '',
@@ -31,83 +32,66 @@ const Enroll = () => {
         { value: 'program3', label: 'Program 3' },
     ];
 
-    const handleInputChange = (e) => {
-        const { name, value } = e.target;
-        setForm({ ...form, [name]: value });
-    };
+    function handleInputChange(event) {
+        const { name, value } = event.target;
+        setFormData((prevFormData) => ({
+            ...prevFormData,
+            [name]: value,
+        }));
+    }
 
-    const handleSelectChange = (selectedOption, { name }) => {
-        setForm({ ...form, [name]: selectedOption ? selectedOption.value : '' });
-    };
+    function handleSelectChange(selectedOption, fieldName) {
+        setFormData((prevFormData) => ({
+            ...prevFormData,
+            [fieldName]: selectedOption ? selectedOption.value : '',
+        }));
+    }
 
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        console.log('Form data:', form);
+    function handleSubmit(event) {
+        event.preventDefault();
+        console.log('Form data:', formData);
         alert('Form submitted!');
-    };
+    }
 
     return (
-        <form onSubmit={handleSubmit} style={formStyle}>
-            <h2 style={headerStyle}>Patient Enrollment</h2>
+        <form onSubmit={handleSubmit} className="form-container">
+            <h2 className="form-header">Patient Enrollment</h2>
 
-            <div style={formGroup}>
-                <label>Fullname:</label>
-                <input type="text" name="fullName" value={form.fullName} onChange={handleInputChange} required />
-            </div>
+            {renderFormInput("Fullname:", "fullName", formData.fullName, handleInputChange)}
+            {renderFormInput("Patient Id:", "patientId", formData.patientId, handleInputChange)}
+            {renderFormInput("Date of birth:", "dob", formData.dob, handleInputChange, "date")}
+            {renderFormSelect("Gender:", "gender", genderOptions, formData.gender, handleSelectChange)}
+            {renderFormInput("Phone number:", "phoneNumber", formData.phoneNumber, handleInputChange, "tel")}
+            {renderFormInput("Email:", "email", formData.email, handleInputChange, "email")}
+            {renderFormSelect("Language preference:", "preferredLanguage", languageOptions, formData.preferredLanguage, handleSelectChange)}
+            {renderFormSelect("Program enrolled:", "programEnrolled", programOptions, formData.programEnrolled, handleSelectChange)}
 
-            <div style={formGroup}>
-                <label>Patient Id:</label>
-                <input type="text" name="patientId" value={form.patientId} onChange={handleInputChange} required />
-            </div>
-
-            <div style={formGroup}>
-                <label>Date of birth:</label>
-                <input type="date" name="dob" value={form.dob} onChange={handleInputChange} required />
-            </div>
-
-            <div style={formGroup}>
-                <label>Gender:</label>
-                <Select
-                    options={genderOptions}
-                    name="gender"
-                    onChange={(option) => handleSelectChange(option, { name: 'gender' })}
-                    placeholder="Select gender"
-                />
-            </div>
-
-            <div style={formGroup}>
-                <label>Phone number:</label>
-                <input type="tel" name="phoneNumber" value={form.phoneNumber} onChange={handleInputChange} />
-            </div>
-
-            <div style={formGroup}>
-                <label>Email:</label>
-                <input type="email" name="email" value={form.email} onChange={handleInputChange} />
-            </div>
-
-            <div style={formGroup}>
-                <label>Language preference:</label>
-                <Select
-                    options={languageOptions}
-                    name="preferredLanguage"
-                    onChange={(option) => handleSelectChange(option, { name: 'preferredLanguage' })}
-                    placeholder="Select language"
-                />
-            </div>
-
-            <div style={formGroup}>
-                <label>Program enrolled:</label>
-                <Select
-                    options={programOptions}
-                    name="programEnrolled"
-                    onChange={(option) => handleSelectChange(option, { name: 'programEnrolled' })}
-                    placeholder="Select program"
-                />
-            </div>
-
-            <button type="submit" style={buttonStyle}>Enroll</button>
+            <button type="submit" className="submit-button">Enroll</button>
         </form>
     );
-};
+}
 
-export default Enroll
+function renderFormInput(label, name, value, onChange, type = "text") {
+    return (
+        <div className="form-group">
+            <label>{label}</label>
+            <input type={type} name={name} value={value} onChange={onChange} required />
+        </div>
+    );
+}
+
+function renderFormSelect(label, name, options, value, onChange) {
+    return (
+        <div className="form-group">
+            <label>{label}</label>
+            <Select
+                options={options}
+                value={options.find(option => option.value === value)}
+                onChange={(option) => onChange(option, name)}
+                placeholder={`Select ${label.toLowerCase()}`}
+            />
+        </div>
+    );
+}
+
+export default Enroll;
