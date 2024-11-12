@@ -40,3 +40,11 @@
     background-color: white;
     border-radius: 4px; /* Optional: round corners on active link */
 }
+
+hr {
+    width: 100%; /* Full width to make it span horizontally */
+    height: 1px; /* Thin line for the horizontal rule */
+    background-color: white; /* Line color */
+    border: none;
+    margin-top: 10px; /* Space above the line */
+  }
