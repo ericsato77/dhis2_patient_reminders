@@ -27,6 +27,7 @@
 .form-group {
     display: flex;
     flex-direction: column;
+    font-size: x-large;
 }
 
 /* Button style */
