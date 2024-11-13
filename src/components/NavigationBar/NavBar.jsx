@@ -16,13 +16,6 @@ function NavBar() {
       <NavLink to="/view-appointments" activeClassName="active-link" className="nav-link appointments">
         View Appointments
       </NavLink>
-
-      
-    </nav>
-    
-    
-  );
-
     </nav>
   );
 }
