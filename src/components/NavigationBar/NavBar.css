@@ -40,6 +40,7 @@
     background-color: white;
     border-radius: 4px; /* Optional: round corners on active link */
 }
+<<<<<<< HEAD
 
 hr {
     width: 100%; /* Full width to make it span horizontally */
@@ -48,3 +49,5 @@ hr {
     border: none;
     margin-top: 10px; /* Space above the line */
   }
+=======
+>>>>>>> 8b34fafec22ed493d1f0f3e1b41d107bdb596636
