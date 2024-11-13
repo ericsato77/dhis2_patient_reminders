@@ -1,0 +1,50 @@
+/* Nav.css */
+
+.navbar {
+    background-color: #2c6793;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 100px; /* Space between links */
+    max-width: 1000px; /* width of navbar */
+    margin: 0 auto; /* Center the navbar */
+
+    
+   
+}
+.enroll{border: 1px solid white;}
+.enrolled{border: 1px solid white;}
+.appointments{border: 1px solid white;}
+
+.nav-link {
+    color: white;
+    text-decoration: none;
+    padding: 10px 20px;
+    font-size: 1em;
+    text-align: center;
+}
+
+/* Add border to separate links */
+.nav-link:not(:last-child) {
+
+    padding-right: 20px; /* Extra space after the border */
+}
+
+.nav-link:hover {
+    background-color: #1f4a6a;
+}
+
+.active-link {
+    color: #2c6793;
+    background-color: white;
+    border-radius: 4px; /* Optional: round corners on active link */
+}
+
+hr {
+    width: 100%; /* Full width to make it span horizontally */
+    height: 1px; /* Thin line for the horizontal rule */
+    background-color: white; /* Line color */
+    border: none;
+    margin-top: 10px; /* Space above the line */
+  }
