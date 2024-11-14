@@ -11,14 +11,13 @@
     "deploy": "d2-app-scripts deploy"
   },
   "devDependencies": {
+    "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
     "@dhis2/cli-app-scripts": "^11.7.5"
   },
   "dependencies": {
     "@dhis2/app-runtime": "^3.11.2",
     "@dhis2/ui": "^9.13.0",
-
-    "react-router-dom": "^6.27.0",
+    "react-router-dom": "^6.28.0",
     "react-select": "^5.8.3"
-
   }
 }

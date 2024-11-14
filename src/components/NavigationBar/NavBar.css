@@ -9,17 +9,13 @@
     gap: 100px; /* Space between links */
     max-width: 1000px; /* width of navbar */
     margin: 0 auto; /* Center the navbar */
-}
 
-.enroll {
-    border: 1px solid white;
+    
+   
 }
-.enrolled {
-    border: 1px solid white;
-}
-.appointments {
-    border: 1px solid white;
-}
+.enroll{border: 1px solid white;}
+.enrolled{border: 1px solid white;}
+.appointments{border: 1px solid white;}
 
 .nav-link {
     color: white;
@@ -31,6 +27,7 @@
 
 /* Add border to separate links */
 .nav-link:not(:last-child) {
+
     padding-right: 20px; /* Extra space after the border */
 }
 
@@ -50,4 +47,4 @@ hr {
     background-color: white; /* Line color */
     border: none;
     margin-top: 10px; /* Space above the line */
-}
+  }
