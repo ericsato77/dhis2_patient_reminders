@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import './Appointment.css'
+import Select from 'react-select';
 
 function AppointmentTable() {
     const [appointments, setAppointments] = useState([
@@ -36,11 +38,6 @@ function AppointmentTable() {
         ]);
     };
 
-    const removeRow = (index) => {
-        const updatedAppointments = appointments.filter((_, i) => i !== index);
-        setAppointments(updatedAppointments);
-    };
-
     return (
         <div>
             <h2>Appointments</h2>
@@ -53,7 +50,6 @@ function AppointmentTable() {
                         <th>Reminder</th>
                         <th>Schedule</th>
                         <th>Status</th>
-                        <th>Actions</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -130,9 +126,6 @@ function AppointmentTable() {
                                         </option>
                                     ))}
                                 </select>
-                            </td>
-                            <td>
-                                <button onClick={() => removeRow(index)}>Remove</button>
                             </td>
                         </tr>
                     ))}
