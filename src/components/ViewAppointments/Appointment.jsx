@@ -1,4 +1,5 @@
 import React from 'react';
+import './Appointment.css'
 
 function Appointments() {
     // Sample data for appointments
