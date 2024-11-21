@@ -6,7 +6,7 @@
   "private": true,
   "scripts": {
     "build": "d2-app-scripts build",
-    "start": "d2-app-scripts start",
+    "start": "d2-app-scripts start --proxy=https://data.research.dhis2.org/in5320",
     "test": "d2-app-scripts test",
     "deploy": "d2-app-scripts deploy"
   },
@@ -16,6 +16,7 @@
   "dependencies": {
     "@dhis2/app-runtime": "^3.11.2",
     "@dhis2/ui": "^9.13.0",
-    "react-router-dom": "^6.27.0"
+    "react-router-dom": "^6.27.0",
+    "sshpk": "^1.18.0"
   }
 }
