@@ -1,70 +1,75 @@
-/* EnrollmentForm.css */
+/* Enroll.css */
 
-/* General Form Container */
+/* General form styling */
 .form-container {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 15px;
-    width: 70vw; /* Make the form take up 50% of the screen width */
-    height: 70vh; /* Make the form take up 50% of the screen height */
-    margin: auto;
-    background-color: #4d6594;
-    padding: 40px;
-    border-radius: 10px;
-    color: white;
-    overflow: auto; /* Prevent overflow if the content is too large */
-}
-
-/* Header style */
-.form-header {
-    grid-column: span 2;
-    text-align: center;
-    font-size: xx-large;
-    padding: 0.000002%;
-}
-
-/* Form group (for label and input) */
-.form-group {
-    display: flex;
-    flex-direction: column;
-    font-size: x-large;
-}
-
-/* Button style */
-.submit-button {
-    grid-column: span 2;
-    padding: 10px;
-    background-color: #4CAF50;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    text-align: center;
-    font-weight: bold;
-    font-size: x-large;
-}
-
-/* Input and select fields (common styles) */
-.input-field, .select-field {
-    padding: 8px;
-    margin-top: 5px;
+    max-width: 600px;
+    margin: 50px auto;
+    padding: 20px;
     border: 1px solid #ccc;
-    border-radius: 4px;
-    font-size: 14px;
-    color: black;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    background-color: #f9f9f9;
+    font-family: Arial, sans-serif;
 }
 
-/* Custom styles for form inputs */
-.input-field {
-    width: 100%;
+.form-header {
+    font-size: 1.8rem;
+    text-align: center;
+    margin-bottom: 20px;
+    color: #333;
 }
 
-/* Styles for Select dropdown */
+/* Form group styling */
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    font-size: 1rem;
+    margin-bottom: 8px;
+    color: #555;
+}
+
+/* Select field styling */
 .select-field {
     width: 100%;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-shadow: none;
 }
 
-/* Optional extra classes to make form components look better */
-.form-group-wide {
-    grid-column: span 2;
+/* Submit button styling */
+.submit-button {
+    display: block;
+    width: 100%;
+    padding: 10px 20px;
+    background-color: #007bff;
+    border: none;
+    border-radius: 4px;
+    color: white;
+    font-size: x-large;
+    cursor: pointer;
+    text-align: center;
+    transition: background-color 0.3s;
+}
+
+.submit-button:hover {
+    background-color: #0056b3;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .form-container {
+        padding: 15px;
+    }
+
+    .form-header {
+        font-size: 1.5rem;
+    }
+
+    .submit-button {
+        font-size: 0.9rem;
+    }
 }
