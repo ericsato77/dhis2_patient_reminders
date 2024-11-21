@@ -67,3 +67,8 @@
 .form-group-wide {
     grid-column: span 2;
 }
+.error-message {
+    color: red;
+    margin-bottom: 10px;
+}
+

@@ -14,6 +14,9 @@ function Enroll() {
         programEnrolled: '',
     });
 
+    const [error, setError] = useState(null);
+    const [successMessage, setSuccessMessage] = useState(null);
+
     const genderOptions = [
         { value: 'male', label: 'Male' },
         { value: 'female', label: 'Female' },
@@ -47,15 +50,72 @@ function Enroll() {
         }));
     }
 
-    function handleSubmit(event) {
+    async function handleSubmit(event) {
         event.preventDefault();
-        console.log('Form data:', formData);
-        alert('Form submitted!');
+        setError(null);
+        setSuccessMessage(null);
+
+        const apiUrl = process.env.REACT_APP_DHIS2_URL;
+        const username = process.env.REACT_APP_DHIS2_USERNAME;
+        const password = process.env.REACT_APP_DHIS2_PASSWORD;
+
+        const enrollmentData = {
+            trackedEntityType: 'nEenWmSyUEp', // Example tracked entity type ID
+            orgUnit: 'DiszpKrYNg8', // Example organization unit ID
+            attributes: [
+                { attribute: 'sB1IHYu2xQT', value: formData.fullName },
+                { attribute: 'fctSQp5nAYl', value: formData.dob },
+                { attribute: 'cejWyOfXge6', value: formData.phoneNumber },
+                { attribute: 'oindugucx72', value: formData.email },
+                { attribute: 'qZZf8vD8d8W', value: formData.gender },
+                { attribute: 'czpFPnwPz6E', value: formData.preferredLanguage },
+            ],
+            enrollments: [
+                {
+                    orgUnit: 'DiszpKrYNg8',
+                    program: formData.programEnrolled,
+                    enrollmentDate: new Date().toISOString().split('T')[0],
+                },
+            ],
+        };
+
+        try {
+            const response = await fetch(`${apiUrl}/api/trackedEntityInstances`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    Authorization: `Basic ${btoa(`${username}:${password}`)}`,
+                },
+                body: JSON.stringify(enrollmentData),
+            });
+
+            if (response.ok) {
+                setSuccessMessage('Patient enrolled successfully!');
+                setFormData({
+                    fullName: '',
+                    patientId: '',
+                    dob: '',
+                    gender: '',
+                    phoneNumber: '',
+                    email: '',
+                    preferredLanguage: '',
+                    programEnrolled: '',
+                });
+            } else {
+                const errorData = await response.json();
+                setError(`Error: ${errorData.message || 'An error occurred while enrolling the patient.'}`);
+            }
+        } catch (error) {
+            setError('An unexpected error occurred. Please try again.');
+        }
     }
 
     return (
         <form onSubmit={handleSubmit} className="form-container">
             <h2 className="form-header">Patient Enrollment</h2>
+
+            {error && <p className="error-message">{error}</p>}
+            {successMessage && <p className="success-message">{successMessage}</p>}
 
             {renderFormInput("Fullname:", "fullName", formData.fullName, handleInputChange)}
             {renderFormInput("Patient Id:", "patientId", formData.patientId, handleInputChange)}
