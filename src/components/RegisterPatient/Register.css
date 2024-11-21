@@ -1,0 +1,114 @@
+/* General Styles */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    color: #333;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .register-form {
+    max-width: 600px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+  }
+  
+  h2 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 20px;
+  }
+  
+  form {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  input,
+  select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 2px solid #ccc;
+    border-radius: 8px;
+    font-size: 16px;
+    transition: all 0.3s;
+  }
+  
+  /* Focus and Hover Effects */
+  input:focus,
+  select:focus {
+    border-color: #007bff;
+    outline: none;
+  }
+  
+  input:hover,
+  select:hover {
+    border-color: #007bff;
+  }
+  
+  /* Register Button (Green) */
+  button.register,
+  .d2l-button.register {
+    padding: 12px 20px;
+    background-color: #28a745; /* Green */
+    color: #fff;
+    font-size: 16px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  button.register:hover,
+  .d2l-button.register:hover {
+    background-color: #218838; /* Darker green */
+  }
+  
+  button.register:disabled,
+  .d2l-button.register:disabled {
+    background-color: #cccccc;
+    cursor: not-allowed;
+  }
+  
+  /* Cancel Button (Red) */
+  button.cancel,
+  .d2l-button.cancel {
+    padding: 12px 20px;
+    background-color: #dc3545; /* Red */
+    color: #fff;
+    font-size: 16px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  button.cancel:hover,
+  .d2l-button.cancel:hover {
+    background-color: #c82333; /* Darker red */
+  }
+  
+  button.cancel:disabled,
+  .d2l-button.cancel:disabled {
+    background-color: #cccccc;
+    cursor: not-allowed;
+  }
+  
+  /* Success Notification */
+  .d2l-notice-box.success {
+    background-color: #28a745;
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
+    margin-top: 20px;
+  }
+  
+  .loader {
+    text-align: center;
+    padding: 50px;
+  }
+  

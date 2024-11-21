@@ -5,6 +5,11 @@ import './NavBar.css';
 function NavBar() {
   return (
     <nav className="navbar">
+
+      <NavLink to="/Register" activeClassName="active-link" className="nav-link Register">
+        Register Patient
+      </NavLink>
+
       <NavLink to="/enroll" activeClassName="active-link" className="nav-link enroll">
         Enroll Patient
       </NavLink>
