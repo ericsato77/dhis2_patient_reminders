@@ -1,13 +1,18 @@
 import React, { useState, useEffect } from "react";
-import Select from "react-select"; // Use react-select for consistent styling
+import Select from "react-select";
 import { Input, NoticeBox, Button } from "@dhis2/ui";
 import { enrollPatient } from "./Api";
 import "./Enroll.css";
 import { useDataQuery } from "@dhis2/app-runtime";
 
-const orgUnitId = "DFyu9VGpodC";
-const programid = "qQIsC9hO2Gj";
+// Error messages centralized for reusability
+const ERROR_MESSAGES = {
+    MISSING_FIELDS: "Please fill all fields before enrolling.",
+    UNEXPECTED_RESPONSE: "Enrollment failed: Unexpected response.",
+    PATIENT_ALREADY_ENROLLED: "Enrollment failed: Please ensure the patient isn't already enrolled.",
+};
 
+// Queries for fetching data
 const orgUnitsQuery = {
     orgUnits: {
         resource: "organisationUnits",
@@ -42,6 +47,12 @@ const patientsQuery = (orgUnitId) => ({
     },
 });
 
+const mapToOptions = (items, labelKey = "displayName", valueKey = "id") =>
+    items?.map((item) => ({
+        value: item[valueKey],
+        label: item[labelKey],
+    })) || [];
+
 const Enroll = () => {
     const [formData, setFormData] = useState({
         orgUnit: "",
@@ -50,43 +61,29 @@ const Enroll = () => {
         enrollmentDate: new Date().toISOString().split("T")[0],
     });
 
-    const [enrollmentSuccess, setEnrollmentSuccess] = useState(false);
-    const [enrollmentError, setEnrollmentError] = useState("");
-    const [loading, setLoading] = useState(false);
+    const [status, setStatus] = useState({
+        success: false,
+        error: "",
+        loading: false,
+    });
 
-    const { loading: loadingOrgUnits, data: orgUnitsData } =
-        useDataQuery(orgUnitsQuery);
-    const {
-        loading: loadingPrograms,
-        data: programsData,
-        refetch: refetchPrograms,
-    } = useDataQuery(programsQuery(formData.orgUnit), { lazy: true });
-    const {
-        loading: loadingPatients,
-        data: patientsData,
-        refetch: refetchPatients,
-    } = useDataQuery(patientsQuery(orgUnitId), { lazy: true });
+    const { loading: loadingOrgUnits, data: orgUnitsData } = useDataQuery(orgUnitsQuery);
+    const { loading: loadingPrograms, data: programsData, refetch: refetchPrograms } =
+        useDataQuery(programsQuery(formData.orgUnit), { lazy: true });
+    const { loading: loadingPatients, data: patientsData, refetch: refetchPatients } =
+        useDataQuery(patientsQuery("DFyu9VGpodC"), { lazy: true });
 
-    const orgUnitsList =
-        orgUnitsData?.orgUnits?.organisationUnits.map((ou) => ({
-            value: ou.id,
-            label: ou.displayName,
-        })) || [];
-    const programsList =
-        programsData?.programs?.programs.map((program) => ({
-            value: program.id,
-            label: program.displayName,
-        })) || [];
+    const orgUnitsList = mapToOptions(orgUnitsData?.orgUnits?.organisationUnits);
+    const programsList = mapToOptions(programsData?.programs?.programs);
     const patientsList =
-        patientsData?.patients?.trackedEntityInstances.map((patient) => ({
-            value: patient.trackedEntityInstance,
-            label:
-                patient.attributes.find((attr) => attr.attribute === "w75KJ2mc4zz")
-                    ?.value +
-                " " +
-                patient.attributes.find((attr) => attr.attribute === "zDhUuAYrxNC")
-                    ?.value,
-        })) || [];
+        patientsData?.patients?.trackedEntityInstances.map((patient) => {
+            const firstName = patient.attributes.find((attr) => attr.attribute === "w75KJ2mc4zz")?.value;
+            const lastName = patient.attributes.find((attr) => attr.attribute === "zDhUuAYrxNC")?.value;
+            return {
+                value: patient.trackedEntityInstance,
+                label: `${firstName || ""} ${lastName || ""}`.trim(),
+            };
+        }) || [];
 
     useEffect(() => {
         if (formData.orgUnit) {
@@ -98,40 +95,41 @@ const Enroll = () => {
     const handleSelectChange = (selectedOption, fieldName) => {
         setFormData((prev) => ({
             ...prev,
-            [fieldName]: selectedOption ? selectedOption.value : "",
+            [fieldName]: selectedOption?.value || "",
         }));
     };
 
     const handleEnroll = async () => {
-        if (!formData.orgUnit || !formData.programEnrolled || !formData.patientId) {
-            setEnrollmentError("Please fill all fields before enrolling.");
+        const { orgUnit, programEnrolled, patientId, enrollmentDate } = formData;
+
+        if (!orgUnit || !programEnrolled || !patientId) {
+            setStatus({ success: false, error: ERROR_MESSAGES.MISSING_FIELDS, loading: false });
             return;
         }
 
-        setEnrollmentError("");
-        setEnrollmentSuccess(false);
-        setLoading(true);
+        setStatus({ success: false, error: "", loading: true });
 
         try {
             const enrollmentData = {
-                program: programid,
-                orgUnit: orgUnitId,
-                trackedEntityInstance: formData.patientId,
-                enrollmentDate: formData.enrollmentDate,
+                program: programEnrolled,
+                orgUnit,
+                trackedEntityInstance: patientId,
+                enrollmentDate,
             };
 
             const response = await enrollPatient(enrollmentData);
+
             if (response.status === "OK") {
-                setEnrollmentSuccess(true);
+                setStatus({ success: true, error: "", loading: false });
             } else {
-                setEnrollmentError("Enrollment failed: Unexpected response.");
+                setStatus({ success: false, error: ERROR_MESSAGES.UNEXPECTED_RESPONSE, loading: false });
             }
         } catch (error) {
-            setEnrollmentError(
-                "Enrollment failed: Please ensure the patient isn't already enrolled."
-            );
-        } finally {
-            setLoading(false);
+            setStatus({
+                success: false,
+                error: ERROR_MESSAGES.PATIENT_ALREADY_ENROLLED,
+                loading: false,
+            });
         }
     };
 
@@ -143,9 +141,7 @@ const Enroll = () => {
                 <label>Organization Unit:</label>
                 <Select
                     options={orgUnitsList}
-                    value={orgUnitsList.find(
-                        (option) => option.value === formData.orgUnit
-                    )}
+                    value={orgUnitsList.find((option) => option.value === formData.orgUnit)}
                     onChange={(option) => handleSelectChange(option, "orgUnit")}
                     className="select-field"
                     placeholder="Select organization unit"
@@ -157,9 +153,7 @@ const Enroll = () => {
                 <label>Program:</label>
                 <Select
                     options={programsList}
-                    value={programsList.find(
-                        (option) => option.value === formData.programEnrolled
-                    )}
+                    value={programsList.find((option) => option.value === formData.programEnrolled)}
                     onChange={(option) => handleSelectChange(option, "programEnrolled")}
                     className="select-field"
                     placeholder="Select program"
@@ -171,9 +165,7 @@ const Enroll = () => {
                 <label>Patient:</label>
                 <Select
                     options={patientsList}
-                    value={patientsList.find(
-                        (option) => option.value === formData.patientId
-                    )}
+                    value={patientsList.find((option) => option.value === formData.patientId)}
                     onChange={(option) => handleSelectChange(option, "patientId")}
                     className="select-field"
                     placeholder="Select patient"
@@ -197,18 +189,18 @@ const Enroll = () => {
                 onClick={handleEnroll}
                 type="button"
                 className="submit-button"
-                disabled={loading}
+                disabled={status.loading}
             >
-                {loading ? "Enrolling..." : "Enroll Patient"}
+                {status.loading ? "Enrolling..." : "Enroll Patient"}
             </button>
 
-            {enrollmentError && (
+            {status.error && (
                 <NoticeBox title="Error" error>
-                    {enrollmentError}
+                    {status.error}
                 </NoticeBox>
             )}
 
-            {enrollmentSuccess && (
+            {status.success && (
                 <NoticeBox title="Success" success>
                     Patient enrolled successfully!
                 </NoticeBox>
