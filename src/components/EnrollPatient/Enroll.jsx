@@ -126,7 +126,7 @@ function Enroll() {
             {renderFormSelect("Language preference:", "preferredLanguage", languageOptions, formData.preferredLanguage, handleSelectChange)}
             {renderFormSelect("Program enrolled:", "programEnrolled", programOptions, formData.programEnrolled, handleSelectChange)}
 
-            <button type="submit" className="submit-button">Enroll</button>
+            <button type="submit" className="submit-button">ENROLL</button>
         </form>
     );
 }
