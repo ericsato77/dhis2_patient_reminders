@@ -41,6 +41,7 @@
     cursor: pointer;
     text-align: center;
     font-weight: bold;
+    font-size: x-large;
 }
 
 /* Input and select fields (common styles) */
