@@ -1,84 +1,97 @@
-/* General Table Container */
+/* Container Styling */
 .table-container {
-    width: 80vw;
-    margin: auto;
-    margin-top: 20px;
-    border-collapse: collapse; /* Collapse borders for the table */
-    overflow-x: auto; /* Enable horizontal scrolling for small screens */
-}
-
-/* Table Header Style */
-table thead {
-    background-color: #2d4472;
+    width: 50%; /* Compact width to reduce table size */
+    margin: 20px auto; /* Centered alignment */
+    padding: 10px;
+    background-color: #043554; /* Dark blue background */
+    border-radius: 8px;
     color: white;
-    font-size: 16px;
-    text-align: left;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Add subtle shadow */
 }
 
-/* Table Rows and Borders */
+/* Table Header */
+h2 {
+    text-align: center;
+    color: white;
+    margin-bottom: 15px; /* Compact header spacing */
+    font-size: 18px; /* Smaller font size */
+    font-weight: bold;
+}
+
+/* Table Styling */
 table {
-    width: 100%;
-    border: 1px solid #ccc;
-    font-size: 14px;
+    width: 100%; /* Fit within the container */
+    border-collapse: collapse;
+    background-color: #043554; /* Match container */
+    font-size: 12px; /* Compact table font */
+}
+
+table thead {
+    background-color: #005983; /* Slightly lighter blue */
+    color: white;
+    font-weight: bold;
+    text-align: left;
 }
 
 table th, table td {
-    padding: 10px;
-    border: 1px solid #ccc;
-    text-align: left;
-}
-
-table tbody tr:nth-child(even) {
-    background-color: #f9f9f9; /* Light background for even rows */
-}
-
-table tbody tr:nth-child(odd) {
-    background-color: #fff; /* White background for odd rows */
-}
-
-/* Buttons for Actions */
-.add-button, .remove-button {
-    padding: 8px 12px;
-    background-color: #4CAF50;
+    padding: 8px; /* Compact padding */
+    border: 1px solid #008db5; /* Subtle border for separation */
+    text-align: center; /* Centered content for readability */
     color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    text-align: center;
-    font-weight: bold;
-    margin-top: 10px;
-}
-
-.add-button:hover, .remove-button:hover {
-    background-color: #45a049; /* Slightly darker shade on hover */
-}
-
-.remove-button {
-    background-color: #f44336; /* Red color for remove button */
-}
-
-.remove-button:hover {
-    background-color: #d32f2f; /* Slightly darker red on hover */
 }
 
 /* Input Fields and Dropdowns */
 table input[type="text"],
 table input[type="date"],
 table select {
-    width: 100%;
-    padding: 8px;
-    margin: 2px 0;
-    box-sizing: border-box;
-    border: 1px solid #ccc;
+    width: 90%; /* Small input fields */
+    padding: 6px; /* Compact padding */
+    font-size: 12px; /* Smaller font */
+    border: 1px solid #008db5;
     border-radius: 4px;
-    font-size: 14px;
-    color: black;
+    background-color: #fff; /* White input background */
+    color: #043554; /* Dark blue text */
+    box-sizing: border-box; /* Ensure consistent input sizing */
 }
 
-/* Table Heading */
-h2 {
-    text-align: center;
-    color: #2d4472;
-    font-size: 24px;
-    font-weight: bold;
+/* Alternate Row Colors */
+table tbody tr:nth-child(even) {
+    background-color: #005983; /* Alternate row blue */
+}
+
+table tbody tr:nth-child(odd) {
+    background-color: #043554; /* Match container for odd rows */
+}
+
+/* Button Styling */
+button {
+    padding: 6px 12px; /* Smaller buttons */
+    margin-top: 10px;
+    background-color: #00a0d1; /* Bright blue */
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 12px; /* Compact font */
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #008db5; /* Slightly darker blue on hover */
+}
+
+/* Responsive Design */
+@media screen and (max-width: 768px) {
+    .table-container {
+        width: 80%; /* Adjust width for smaller screens */
+    }
+
+    table {
+        font-size: 10px; /* Smaller font on small devices */
+    }
+
+    button {
+        font-size: 10px;
+        padding: 5px 10px;
+    }
 }
