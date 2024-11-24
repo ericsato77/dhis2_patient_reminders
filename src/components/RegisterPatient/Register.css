@@ -28,6 +28,7 @@
   border-radius: 5px;
   width: 100%;
   box-sizing: border-box;
+  margin-bottom: 20px;
 }
 
 .register-form input:focus,
@@ -37,22 +38,16 @@
   box-shadow: 0 0 5px rgba(76, 175, 80, 0.5);
 }
 
-/* Horizontal group layout */
-.horizontal-group {
+/* Button container for spacing between submit and reset */
+.buttons-container {
   display: flex;
   justify-content: space-between;
-  gap: 15px;
-  margin-bottom: 15px;
+  gap: 5px !important; /* Add spacing between buttons */
+  margin-top: 20px;
 }
 
-.horizontal-group input,
-.horizontal-group select {
-  flex: 1;
-}
-
-/* Buttons container */
-.horizontal-group button {
-  flex: 1;
+button[type="submit"],
+button[type="reset"] {
   padding: 10px;
   font-size: 1em;
   border-radius: 5px;
@@ -73,7 +68,7 @@ button[type="submit"]:hover {
 
 /* Cancel button styling */
 button[type="reset"] {
-  background-color: #f44336; /* Red color */
+  background-color: #f44336 !important; /* Red color */
   color: white;
 }
 
@@ -106,7 +101,7 @@ button[type="reset"]:hover {
 
 /* Media query for responsiveness */
 @media (max-width: 768px) {
-  .horizontal-group {
+  .buttons-container {
     flex-direction: column;
     gap: 10px;
   }
