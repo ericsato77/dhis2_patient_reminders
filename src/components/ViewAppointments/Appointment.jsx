@@ -1,20 +1,17 @@
 import React, { useState } from 'react';
-import './Appointment.css'; 
+import './Appointment.css';
 
 function AppointmentTable() {
+    // Dynamically create empty rows
     const [appointments, setAppointments] = useState(
-        Array(7).fill({
-            firstName: '',
-            lastName: '',
-            programEnrolled: '',
-            appointmentType: '',
-            reminder: '',
-        })
+        Array(7).fill({ firstName: '', lastName: '', programEnrolled: '', appointmentType: '', reminder: '' })
     );
 
     const handleInputChange = (index, field, value) => {
-        const updatedAppointments = [...appointments];
-        updatedAppointments[index][field] = value;
+        // Update only the specific row and field
+        const updatedAppointments = appointments.map((appointment, i) =>
+            i === index ? { ...appointment, [field]: value } : appointment
+        );
         setAppointments(updatedAppointments);
     };
 
@@ -34,36 +31,9 @@ function AppointmentTable() {
                 <tbody>
                     {appointments.map((appointment, index) => (
                         <tr key={index}>
-                            <td>
-                                <input
-                                    type="text"
-                                    value={appointment.firstName}
-                                    onChange={(e) =>
-                                        handleInputChange(index, 'firstName', e.target.value)
-                                    }
-                                    placeholder="Enter First Name"
-                                />
-                            </td>
-                            <td>
-                                <input
-                                    type="text"
-                                    value={appointment.lastName}
-                                    onChange={(e) =>
-                                        handleInputChange(index, 'lastName', e.target.value)
-                                    }
-                                    placeholder="Enter Last Name"
-                                />
-                            </td>
-                            <td>
-                                <input
-                                    type="text"
-                                    value={appointment.programEnrolled}
-                                    onChange={(e) =>
-                                        handleInputChange(index, 'programEnrolled', e.target.value)
-                                    }
-                                    placeholder="Enter Program"
-                                />
-                            </td>
+                            <td>{appointment.firstName || '-'}</td>
+                            <td>{appointment.lastName || '-'}</td>
+                            <td>{appointment.programEnrolled || '-'}</td>
                             <td>
                                 <select
                                     value={appointment.appointmentType}
