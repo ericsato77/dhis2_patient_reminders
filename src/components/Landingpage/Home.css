@@ -5,6 +5,7 @@
     padding: 20px;
     text-align: center;
     line-height: 1.5; /* Adds spacing between lines */
+    border-top: 1px solid #ccc;
   }
 
   .hometext {
