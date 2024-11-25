@@ -3,6 +3,7 @@ import Home from "./components/Landingpage/Home";
 import Enroll from "./components/EnrollPatient/Enroll";
 import Appointment from "./components/ViewAppointments/Appointment"; 
 import EnrolledPatients from "./components/ViewEnrolledPatients/EnrolledPatients";
+import Register from "./components/RegisterPatient/Register";
 import NavBar from "./components/NavigationBar/NavBar";
 import Footer from "./components/Footer/Footer";
 import "./App.css";
@@ -15,6 +16,7 @@ const App = () => {
         <NavBar />
         <Routes>
           <Route path="/" element={<Home />} />
+          <Route path="/Register" element={<Register />} />
           <Route path="/enroll" element={<Enroll />} />
           <Route path="/view-appointments" element={<Appointment />} /> 
         </Routes>
