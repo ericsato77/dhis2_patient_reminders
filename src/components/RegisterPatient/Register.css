@@ -73,7 +73,7 @@ button[type="reset"] {
 }
 
 button[type="reset"]:hover {
-  background-color: #eb9e99;
+  background-color: #f1827a;
 }
 
 /* Styling for the success message */
