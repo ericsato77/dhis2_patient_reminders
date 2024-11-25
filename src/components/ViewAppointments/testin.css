@@ -1,0 +1,92 @@
+/* General Table Container */
+.table-container {
+    width: 60%; /* Set width to 60% of the viewport */
+    margin: auto; /* Center the container horizontally */
+    background-color: #2d4472; /* Dark blue background */
+    color: white; /* White text color */
+    padding: 20px; /* Add padding inside the container */
+    border-radius: 10px; /* Rounded corners */
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2); /* Add a slight shadow */
+    overflow: hidden; /* Prevent overflow */
+}
+
+/* Table Style */
+table {
+    width: 100%;
+    border-collapse: collapse; /* Merge table borders */
+}
+
+table thead {
+    background-color: #2d4472; /* Match the container's background */
+    color: white;
+    font-weight: bold;
+    text-align: left;
+}
+
+table th, table td {
+    padding: 10px;
+    border: 1px solid #ccc; /* Light gray border */
+    text-align: left;
+}
+
+table tbody tr:nth-child(even) {
+    background-color: #3b5998; /* Slightly lighter blue for even rows */
+}
+
+table tbody tr:nth-child(odd) {
+    background-color: #2d4472; /* Match container background for odd rows */
+}
+
+table tbody tr:hover {
+    background-color: #4c6dab; /* Highlight rows on hover */
+}
+
+/* Buttons */
+button {
+    padding: 10px 20px;
+    background-color: #4CAF50; /* Green for action buttons */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: bold;
+    text-align: center;
+    margin: 10px auto; /* Center the button */
+    display: block; /* Make button take up full width of its container */
+}
+
+button:hover {
+    background-color: #45a049; /* Darker green on hover */
+}
+
+.remove-button {
+    background-color: #f44336; /* Red for remove button */
+}
+
+.remove-button:hover {
+    background-color: #d32f2f; /* Darker red on hover */
+}
+
+/* Form Inputs and Dropdowns */
+input[type="text"],
+input[type="date"],
+select {
+    width: 100%;
+    padding: 8px;
+    margin: 5px 0;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 14px;
+    box-sizing: border-box;
+    color: black;
+}
+
+/* Heading Style */
+h2 {
+    text-align: center;
+    color: white; /* White for heading */
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}

@@ -1,74 +1,104 @@
-/* EnrollmentForm.css */
-
-/* General Form Container */
+/* General form container styling */
 .form-container {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 15px;
-    width: 70vw; /* Make the form take up 50% of the screen width */
-    height: 70vh; /* Make the form take up 50% of the screen height */
-    margin: auto;
-    background-color: #2d4472;
-    padding: 40px;
-    border-radius: 10px;
-    color: white;
-    overflow: auto; /* Prevent overflow if the content is too large */
+    max-width: 600px;
+    margin: 2rem auto;
+    padding: 2rem;
+    background-color: #ffffff;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    font-family: Arial, sans-serif;
 }
 
-/* Header style */
+/* Form header styling */
 .form-header {
-    grid-column: span 2;
     text-align: center;
-    font-size: xx-large;
-    padding: 0.000002%;
+    font-size: 2.0rem;
+    font-weight: bolder;
+    margin-bottom: 1.5rem;
+    color: #000000;
 }
 
-/* Form group (for label and input) */
+/* Form group styling for alignment and spacing */
 .form-group {
-    display: flex;
-    flex-direction: column;
-    font-size: x-large;
+    margin-bottom: 1.5rem;
 }
 
-/* Button style */
-.submit-button {
-    grid-column: span 2;
-    padding: 10px;
-    background-color: #4CAF50;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    text-align: center;
+.form-group label {
+    display: block;
     font-weight: bold;
+    font-size: larger;
+    margin-bottom: 0.5rem;
+    color: #000000;
 }
 
-/* Input and select fields (common styles) */
-.input-field, .select-field {
-    padding: 8px;
-    margin-top: 5px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    font-size: 14px;
-    color: black;
-}
-
-/* Custom styles for form inputs */
-.input-field {
-    width: 100%;
-}
-
-/* Styles for Select dropdown */
+/* Styling react-select fields */
 .select-field {
     width: 100%;
+    font-size: 1rem;
+    border: none;
 }
 
-/* Optional extra classes to make form components look better */
-.form-group-wide {
-    grid-column: span 2;
-}
-.error-message {
-    color: red;
-    margin-bottom: 10px;
+.select-field__control {
+    border: 1px solid #2f2f2f !important;
+    border-radius: 4px !important;
+    padding: 0.5rem !important;
+    box-shadow: none !important;
+    transition: border-color 0.3s ease;
 }
 
+.select-field__control:hover {
+    border-color: #3f51b5 !important;
+}
+
+.select-field__single-value {
+    font-size: 1rem !important;
+    color: #1b1b1b !important;
+}
+
+.select-field__menu {
+    z-index: 10;
+}
+
+/* Input field styling */
+.input-field {
+    width: 100%;
+    font-size: 1.5rem;
+    padding: 0.5rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    transition: border-color 0.3s ease;
+}
+
+.input-field:focus {
+    border-color: #3f51b5;
+    outline: none;
+}
+
+/* Button styling */
+.submit-button {
+    width: 100%;
+    background-color: green;
+    color: #fff;
+    font-size: 1.5rem;
+    font-weight: bold;
+    padding: 0.75rem;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.submit-button:hover {
+    background-color: #303f9f;
+}
+
+.submit-button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+}
+
+/* NoticeBox styling */
+.d2ui-noticebox {
+    margin-top: 1.5rem;
+}
