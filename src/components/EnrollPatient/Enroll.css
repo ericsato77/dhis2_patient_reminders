@@ -16,7 +16,7 @@
     font-size: 2.0rem;
     font-weight: bolder;
     margin-bottom: 1.5rem;
-    color: #080808;
+    color: #000000;
 }
 
 /* Form group styling for alignment and spacing */
@@ -27,8 +27,9 @@
 .form-group label {
     display: block;
     font-weight: bold;
+    font-size: larger;
     margin-bottom: 0.5rem;
-    color: #555;
+    color: #000000;
 }
 
 /* Styling react-select fields */
