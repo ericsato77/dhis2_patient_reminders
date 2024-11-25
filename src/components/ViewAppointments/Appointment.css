@@ -1,87 +1,97 @@
-/* Appointment.css */
 
-.appointment-container {
-    padding: 20px;
-    font-family: Arial, sans-serif;
-    background-color: #f9f9f9;
+.table-container {
+    width: 50%; /* Compact width to reduce table size */
+    margin: 20px auto; /* Centered alignment */
+    padding: 10px;
+    background-color: #043554; /* Dark blue background */
     border-radius: 8px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    max-width: 1000px;
-    margin: 20px auto;
+    color: white;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Add subtle shadow */
 }
 
-.appointment-header {
-    font-size: 28px;
-    font-weight: bold;
-    color: #333;
+/* Table Header */
+h2 {
     text-align: center;
-    margin-bottom: 20px;
+    color: white;
+    margin-bottom: 15px; /* Compact header spacing */
+    font-size: 18px; /* Smaller font size */
+    font-weight: bold;
 }
 
-.filter-section {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 20px;
-}
-
-.filter-section label {
-    font-size: 16px;
-    color: #333;
-}
-
-.select-field {
-    width: 250px;
-    padding: 8px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    font-size: 14px;
-}
-
-.appointment-list {
-    margin-top: 20px;
-}
-
-.appointment-table {
-    width: 100%;
+/* Table Styling */
+table {
+    width: 100%; /* Fit within the container */
     border-collapse: collapse;
-    margin-bottom: 20px;
+    background-color: #043554; /* Match container */
+    font-size: 12px; /* Compact table font */
 }
 
-.appointment-table th,
-.appointment-table td {
-    border: 1px solid #ddd;
-    padding: 12px;
+table thead {
+    background-color: #005983; /* Slightly lighter blue */
+    color: white;
+    font-weight: bold;
     text-align: left;
-    font-size: 14px;
 }
 
-.appointment-table th {
-    background-color: #f4f4f4;
-    color: #333;
-    font-weight: bold;
+table th, table td {
+    padding: 8px; /* Compact padding */
+    border: 1px solid #008db5; /* Subtle border for separation */
+    text-align: center; /* Centered content for readability */
+    color: white;
 }
 
-.appointment-table td {
-    background-color: #fff;
+/* Input Fields and Dropdowns */
+table input[type="text"],
+table input[type="date"],
+table select {
+    width: 90%; /* Small input fields */
+    padding: 6px; /* Compact padding */
+    font-size: 12px; /* Smaller font */
+    border: 1px solid #008db5;
+    border-radius: 4px;
+    background-color: #fff; /* White input background */
+    color: #043554; /* Dark blue text */
+    box-sizing: border-box; /* Ensure consistent input sizing */
 }
 
-.appointment-table tr:nth-child(even) {
-    background-color: #f9f9f9;
+/* Alternate Row Colors */
+table tbody tr:nth-child(even) {
+    background-color: #005983; /* Alternate row blue */
 }
 
-.appointment-table tr:hover {
-    background-color: #f1f1f1;
+table tbody tr:nth-child(odd) {
+    background-color: #043554; /* Match container for odd rows */
 }
 
-.appointment-list p {
-    font-size: 16px;
-    color: #555;
-    text-align: center;
+/* Button Styling */
+button {
+    padding: 6px 12px; /* Smaller buttons */
+    margin-top: 10px;
+    background-color: #00a0d1; /* Bright blue */
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 12px; /* Compact font */
+    cursor: pointer;
+    transition: background-color 0.3s ease;
 }
 
-.appointment-list .no-appointments-message {
-    color: #d9534f;
-    font-weight: bold;
-    font-size: 18px;
+button:hover {
+    background-color: #008db5; 
+}
+
+
+@media screen and (max-width: 768px) {
+    .table-container {
+        width: 80%; 
+    }
+
+    table {
+        font-size: 10px; 
+    }
+
+    button {
+        font-size: 10px;
+        padding: 5px 10px;
+    }
 }
