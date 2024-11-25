@@ -1,4 +1,4 @@
-/* Container Styling */
+
 .table-container {
     width: 50%; /* Compact width to reduce table size */
     margin: 20px auto; /* Centered alignment */
@@ -77,17 +77,17 @@ button {
 }
 
 button:hover {
-    background-color: #008db5; /* Slightly darker blue on hover */
+    background-color: #008db5; 
 }
 
-/* Responsive Design */
+
 @media screen and (max-width: 768px) {
     .table-container {
-        width: 80%; /* Adjust width for smaller screens */
+        width: 80%; 
     }
 
     table {
-        font-size: 10px; /* Smaller font on small devices */
+        font-size: 10px; 
     }
 
     button {

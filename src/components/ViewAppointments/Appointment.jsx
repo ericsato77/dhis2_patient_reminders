@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import './Appointment.css'; // Ensure CSS has the updated compact styling.
+import './Appointment.css'; 
 
 function AppointmentTable() {
     const [appointments, setAppointments] = useState(
