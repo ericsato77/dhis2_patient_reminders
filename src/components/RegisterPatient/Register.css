@@ -58,7 +58,7 @@ button[type="reset"] {
 
 /* Register button styling */
 button[type="submit"] {
-  background-color: #4caf50; /* Green color */
+  background-color: green; /* Green color */
   color: white;
 }
 
