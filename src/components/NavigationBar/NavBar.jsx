@@ -14,12 +14,20 @@ function NavBar() {
         Enroll Patient
       </NavLink>
       
+      <NavLink to="/view-enrolled" activeClassName="active-link" className="nav-link viewenrolled">
+        Enrolled Patients
+      </NavLink>
+
       <NavLink to="/view-enrolled" activeClassName="active-link" className="nav-link enrolled">
-        View Enrolled Patients
+        Registered Patients
+      </NavLink>
+
+      <NavLink to="/view-appointments" activeClassName="active-link" className="nav-link schedule">
+        Schedule Appointments
       </NavLink>
       
       <NavLink to="/view-appointments" activeClassName="active-link" className="nav-link appointments">
-        View Appointments
+        Appointments
       </NavLink>
       
     </nav>

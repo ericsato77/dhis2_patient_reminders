@@ -17,6 +17,10 @@
 .enrolled{border: 1px solid white;}
 .appointments{border: 1px solid white;}
 .Register{border: 1px solid white;}
+.viewenrolled{border: 1px solid white;}
+.viewenregistered{border: 1px solid white;}
+.schedule{border: 1px solid white;}
+
 
 .nav-link {
     color: white;
