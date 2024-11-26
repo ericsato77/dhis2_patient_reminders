@@ -4,14 +4,13 @@ import { registerPatient } from "./api";
 import "./Register.css";
 import { Button, NoticeBox, CircularLoader } from "@dhis2/ui";
 
-// DHIS2 query to fetch organization units
 const orgUnitQuery = {
   organisationUnits: {
-    resource: "organisationUnits.json", // Endpoint to fetch org units
+    resource: "organisationUnits.json",
     params: {
-      level: 2, // Fetch organization units at level 2
-      fields: "id,name", // Retrieve ID and name fields
-      paging: false, // Fetch all units without pagination
+      level: 2,
+      fields: "id,name",
+      paging: false,
     },
   },
 };
@@ -35,12 +34,9 @@ const Register = () => {
   const { loading: orgLoading, error, data } = useDataQuery(orgUnitQuery);
 
   useEffect(() => {
-    const loadOrgUnits = () => {
-      if (data?.organisationUnits?.organisationUnits) {
-        setOrgUnits(data.organisationUnits.organisationUnits);
-      }
-    };
-    loadOrgUnits();
+    if (data?.organisationUnits?.organisationUnits) {
+      setOrgUnits(data.organisationUnits.organisationUnits);
+    }
   }, [data]);
 
   const handleChange = ({ target: { name, value } }) =>
@@ -70,7 +66,8 @@ const Register = () => {
     );
   }
 
-  if (error) return <div className="errorOnLoad">Failure to fetch organization units</div>;
+  if (error)
+    return <div className="errorOnLoad">Failure to fetch organization units</div>;
 
   return (
     <div className="register-form">
@@ -81,43 +78,83 @@ const Register = () => {
             Patient Registered Successfully!
           </NoticeBox>
         )}
-        {[{ type: "text", name: "firstName", placeholder: "First Name" },
-          { type: "text", name: "lastName", placeholder: "Last Name" },
-          { type: "date", name: "dob", placeholder: "Date of Birth" },
-          { type: "tel", name: "phone", placeholder: "Phone Number" },
-          { type: "text", name: "location", placeholder: "Location" }]
-          .map((field) => (
-            <input
-              key={field.name}
-              type={field.type}
-              name={field.name}
-              placeholder={field.placeholder}
-              onChange={handleChange}
-              required={field.name !== "location"}
-            />
-          ))}
-        <select name="gender" onChange={handleChange} required>
-          <option value="">Select Gender</option>
-          {["Male", "Female", "Other"].map((gender) => (
-            <option key={gender} value={gender}>
-              {gender}
-            </option>
-          ))}
-        </select>
-        <select name="orgUnit" onChange={handleChange} required>
-          <option value="">Select Organization Unit</option>
-          {orgUnits.map(({ id, name }) => (
-            <option key={id} value={id}>
-              {name}
-            </option>
-          ))}
-        </select>
 
+        {/* First Name and Last Name */}
+        <div className="horizontal-group">
+          <input
+            type="text"
+            name="firstName"
+            placeholder="First Name"
+            onChange={handleChange}
+            required
+          />
+          <input
+            type="text"
+            name="lastName"
+            placeholder="Last Name"
+            onChange={handleChange}
+            required
+          />
+        </div>
+
+        {/* Date of Birth and Phone Number */}
+        <div className="horizontal-group">
+          <input
+            type="date"
+            name="dob"
+            placeholder="Date of Birth"
+            onChange={handleChange}
+            required
+          />
+          <input
+            type="tel"
+            name="phone"
+            placeholder="Phone Number"
+            onChange={handleChange}
+            required
+          />
+        </div>
+
+        {/* Location and Gender */}
+        <div className="horizontal-group">
+          <input
+            type="text"
+            name="location"
+            placeholder="Location"
+            onChange={handleChange}
+          />
+          <select name="gender" onChange={handleChange} required>
+            <option value="">Select Gender</option>
+            {["Male", "Female", "Other"].map((gender) => (
+              <option key={gender} value={gender}>
+                {gender}
+              </option>
+            ))}
+          </select>
+        </div>
+
+        {/* Select Organization Unit */}
+        <div className="horizontal-group">
+          <select name="orgUnit" onChange={handleChange} required>
+            <option value="">Select Organization Unit</option>
+            {orgUnits.map(({ id, name }) => (
+              <option key={id} value={id}>
+                {name}
+              </option>
+            ))}
+          </select>
+        </div>
+
+        {/* Buttons */}
         <div className="buttons-container">
           <Button type="submit" disabled={loading}>
             {loading ? "Registering..." : "Register"}
           </Button>
-          <Button type="reset" secondary onClick={() => setFormData(initialFormData)}>
+          <Button
+            type="reset"
+            secondary
+            onClick={() => setFormData(initialFormData)}
+          >
             Cancel
           </Button>
         </div>
