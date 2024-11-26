@@ -1,0 +1,93 @@
+.table-container {
+    width: 50%;
+    margin: 20px auto;
+    padding: 10px;
+    background-color: #ffffff;
+    border-radius: 8px;
+    color: black;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+h2 {
+    text-align: center;
+    color: black;
+    margin-bottom: 15px;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: #ffffff;
+    font-size: 12px;
+}
+
+table thead {
+    background-color: #f2f2f2;
+    color: black;
+    font-weight: bold;
+    text-align: left;
+}
+
+table th, table td {
+    padding: 8px;
+    border: 1px solid #cccccc;
+    text-align: center;
+    font-weight: bold;
+    color: black;
+}
+
+table input[type="text"],
+table input[type="date"],
+table select {
+    width: 90%;
+    padding: 6px;
+    font-size: 12px;
+    border: 1px solid #cccccc;
+    border-radius: 4px;
+    background-color: #fff;
+    color: black;
+    box-sizing: border-box;
+}
+
+table tbody tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+table tbody tr:nth-child(odd) {
+    background-color: #ffffff;
+}
+
+button {
+    padding: 6px 12px;
+    margin-top: 10px;
+    background-color: #28a745; 
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 12px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #005983; 
+}
+
+
+@media screen and (max-width: 768px) {
+    .table-container {
+        width: 80%;
+    }
+
+    table {
+        font-size: 10px;
+    }
+
+    button {
+        font-size: 10px;
+        padding: 5px 10px;
+    }
+}
