@@ -96,7 +96,7 @@ button[type="reset"]:hover {
 .loader p {
   margin-top: 10px;
   font-size: 1.2em;
-  color: #555;
+  color: white;
 }
 
 /* Media query for responsiveness */

@@ -70,7 +70,7 @@ const Register = () => {
     );
   }
 
-  if (error) return <div>Error fetching organization units</div>;
+  if (error) return <div>Failure to fetch organization units</div>;
 
   return (
     <div className="register-form">
