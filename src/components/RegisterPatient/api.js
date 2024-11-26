@@ -23,7 +23,7 @@ export const registerPatient = async (patientData) => {
         { attribute: "VqEFza8wbwA", value: patientData.address },
       ],
     };
-
+    
     try {
             const response = await api.post('/trackedEntityInstances', data);
             return response.data;

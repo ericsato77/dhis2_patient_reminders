@@ -1,0 +1,67 @@
+/* Registered.css */
+
+/* Container styles */
+.patient-list {
+    margin: 20px;
+    padding: 10px;
+    background-color: #007bff; /* Blue background */
+    border: 1px solid black; /* Black border */
+    border-radius: 5px;
+    color: black; /* Black text */
+    font-family: Arial, sans-serif;
+  }
+  
+  /* Heading styles */
+  .patient-list h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: black; /* Black text for the heading */
+  }
+  
+  /* Table styles */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: white; /* White background for table rows */
+  }
+  
+  /* Table header styles */
+  thead {
+    background-color: #0056b3; /* Darker blue for the header */
+    color: white; /* White text for header */
+  }
+  
+  thead th {
+    border: 1px solid black; /* Black border */
+    padding: 10px;
+    text-align: left;
+  }
+  
+  /* Table body styles */
+  tbody tr {
+    border: 1px solid black; /* Black border for rows */
+  }
+  
+  tbody td {
+    padding: 8px;
+    border: 1px solid black; /* Black border */
+  }
+  
+  /* Alternate row coloring */
+  tbody tr:nth-child(odd) {
+    background-color: #e6f0ff; /* Light blue for alternate rows */
+  }
+  
+  /* Text alignment */
+  td, th {
+    text-align: center; /* Center-align text in all cells */
+  }
+  
+  /* Empty message styles */
+  .patient-list p {
+    text-align: center;
+    font-size: 1.2em;
+    color: black;
+    margin-top: 20px;
+  }
+  

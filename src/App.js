@@ -8,6 +8,7 @@ import NavBar from "./components/NavigationBar/NavBar";
 import Footer from "./components/Footer/Footer";
 import "./App.css";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
+import Registered from './components/ViewRegisteredPatients/Registered';
 
 const App = () => {
   return (
@@ -17,6 +18,7 @@ const App = () => {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/Register" element={<Register />} />
+          <Route path="/RegisteredPatients" element={<Registered />} />
           <Route path="/enroll" element={<Enroll />} />
           <Route path="/view-appointments" element={<Appointment />} /> 
         </Routes>
