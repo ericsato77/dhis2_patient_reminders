@@ -2,17 +2,22 @@ import React, { useState } from 'react';
 import './Appointment.css';
 
 function AppointmentTable() {
-    // Dynamically create empty rows
-    const [appointments, setAppointments] = useState(
-        Array(7).fill({ firstName: '', lastName: '', programEnrolled: '', appointmentType: '', reminder: '' })
-    );
+    const [appointments, setAppointments] = useState([
+        { firstName: '', lastName: '', programEnrolled: '', appointmentType: '' },
+    ]);
 
     const handleInputChange = (index, field, value) => {
-        // Update only the specific row and field
         const updatedAppointments = appointments.map((appointment, i) =>
             i === index ? { ...appointment, [field]: value } : appointment
         );
         setAppointments(updatedAppointments);
+    };
+
+    const handleAddAppointment = () => {
+        setAppointments([
+            ...appointments,
+            { firstName: '', lastName: '', programEnrolled: '', appointmentType: '' },
+        ]);
     };
 
     return (
@@ -25,7 +30,7 @@ function AppointmentTable() {
                         <th>Last Name</th>
                         <th>Program Enrolled</th>
                         <th>Appointment Type</th>
-                        <th>Reminder</th>
+                        <th>Action</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -48,13 +53,12 @@ function AppointmentTable() {
                                 </select>
                             </td>
                             <td>
-                                <input
-                                    type="date"
-                                    value={appointment.reminder}
-                                    onChange={(e) =>
-                                        handleInputChange(index, 'reminder', e.target.value)
-                                    }
-                                />
+                                <button
+                                    className="send-sms-button"
+                                    onClick={handleAddAppointment}
+                                >
+                                    Send SMS
+                                </button>
                             </td>
                         </tr>
                     ))}
