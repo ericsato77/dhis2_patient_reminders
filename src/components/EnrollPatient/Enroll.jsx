@@ -39,7 +39,7 @@ const patientsQuery = (orgUnitId) => ({
     patients: {
         resource: "trackedEntityInstances",
         params: {
-            ou: orgUnitId,
+            ou: "kJq2mPyFEHo",
             trackedEntityType: "nEenWmSyUEp",
             fields: ["trackedEntityInstance", "attributes"],
             pageSize: 50,
@@ -119,7 +119,7 @@ const Enroll = () => {
 
             const response = await enrollPatient(enrollmentData);
 
-            if (response.status === "OK") {
+            if (response) {
                 setStatus({ success: true, error: "", loading: false });
             } else {
                 setStatus({ success: false, error: ERROR_MESSAGES.UNEXPECTED_RESPONSE, loading: false });
@@ -136,6 +136,12 @@ const Enroll = () => {
     return (
         <form onSubmit={(e) => e.preventDefault()} className="form-container">
             <h2 className="form-header">Patient Enrollment</h2>
+
+            {status.success && (
+                <NoticeBox title="Success" success>
+                    Patient enrolled successfully!
+                </NoticeBox>
+            )}
 
             <div className="form-group">
                 <label>Organization Unit:</label>
@@ -200,11 +206,7 @@ const Enroll = () => {
                 </NoticeBox>
             )}
 
-            {status.success && (
-                <NoticeBox title="Success" success>
-                    Patient enrolled successfully!
-                </NoticeBox>
-            )}
+           
         </form>
     );
 };
