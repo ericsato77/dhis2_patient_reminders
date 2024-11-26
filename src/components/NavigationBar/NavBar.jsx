@@ -27,7 +27,7 @@ function NavBar() {
       </NavLink>
       
       <NavLink to="/view-appointments" activeClassName="active-link" className="nav-link appointments">
-        Appointments
+        View Appointments
       </NavLink>
       
     </nav>
