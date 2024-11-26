@@ -90,13 +90,23 @@ button[type="reset"]:hover {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: 100vh;
+  height: 50vh;
 }
 
 .loader p {
   margin-top: 10px;
   font-size: 1.2em;
   color: white;
+}
+.errorOnLoad{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 50vh;
+  margin-top: 10px;
+  font-size: 1.2em;
+  color: red;
 }
 
 /* Media query for responsiveness */
