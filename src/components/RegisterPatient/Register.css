@@ -2,12 +2,16 @@
 .register-form {
   width: 100%;
   max-width: 600px;
-  margin: 0 auto;
-  padding: 20px;
+  margin: auto; /* Center horizontally */
+  padding: 10px;
   border: 2px solid #e0e0e0;
   border-radius: 10px;
   background-color: #f9f9f9;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  position: absolute; /* Position relative to the viewport */
+  top: 50%; /* Center vertically */
+  left: 50%;
+  transform: translate(-50%, -50%); /* Adjust for exact centering */
 }
 
 /* Form heading */
@@ -19,18 +23,34 @@
   font-weight: bold;
 }
 
-/* Styling for input fields and dropdowns */
+/* Input fields and dropdowns */
 .register-form input,
 .register-form select {
   padding: 10px;
   font-size: 1em;
   border: 1px solid #ccc;
   border-radius: 5px;
-  width: 100%;
   box-sizing: border-box;
+  width: 100%;
+}
+
+/* Flex container for paired inputs */
+.horizontal-group {
+  display: flex;
+  gap: 15px; /* Space between fields */
   margin-bottom: 20px;
 }
 
+.horizontal-group input,
+.horizontal-group select {
+  flex: 1; /* Equal width for all fields */
+}
+
+.horizontal-group select {
+  min-width: 150px; /* Prevent select from shrinking too much */
+}
+
+/* Focus styles */
 .register-form input:focus,
 .register-form select:focus {
   border-color: #4caf50;
@@ -38,17 +58,19 @@
   box-shadow: 0 0 5px rgba(76, 175, 80, 0.5);
 }
 
-/* Button container for spacing between submit and reset */
+/* Buttons container */
 .buttons-container {
   display: flex;
   justify-content: space-between;
-  gap: 5px !important; /* Add spacing between buttons */
+  gap: 15px;
   margin-top: 20px;
 }
 
-button[type="submit"],
-button[type="reset"] {
-  padding: 10px;
+/* Submit button styling */
+button[type="submit"] {
+  background-color: green;
+  color: white;
+  padding: 10px 20px;
   font-size: 1em;
   border-radius: 5px;
   border: none;
@@ -56,32 +78,25 @@ button[type="reset"] {
   transition: background-color 0.3s ease;
 }
 
-/* Register button styling */
-button[type="submit"] {
-  background-color: #4caf50; /* Green color */
-  color: white;
-}
-
 button[type="submit"]:hover {
   background-color: #45a049;
 }
 
-/* Cancel button styling */
+/* Reset button styling */
 button[type="reset"] {
-  background-color: #f44336 !important; /* Red color */
+  background-color: red !important;
+  padding: 10px 20px;
+  font-size: 1em;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
   color: white;
+  transition: background-color 0.3s ease;
+  
 }
 
 button[type="reset"]:hover {
   background-color: #d32f2f;
-}
-
-/* Styling for the success message */
-.dhis2-ui-noticebox--success {
-  margin-top: 20px;
-  border: 1px solid #4caf50;
-  background-color: #e8f5e9;
-  color: #2e7d32;
 }
 
 /* Loader styling */
@@ -90,7 +105,7 @@ button[type="reset"]:hover {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: 100vh;
+  height: 50vh;
 }
 
 .loader p {
@@ -99,8 +114,23 @@ button[type="reset"]:hover {
   color: #555;
 }
 
-/* Media query for responsiveness */
+/* Error message styling */
+.errorOnLoad {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 50vh;
+  font-size: 1.5em;
+  color: red;
+}
+
+/* Responsive design */
 @media (max-width: 768px) {
+  .horizontal-group {
+    flex-direction: column; /* Stack fields vertically on small screens */
+  }
+
   .buttons-container {
     flex-direction: column;
     gap: 10px;
