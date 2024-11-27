@@ -137,7 +137,7 @@ const Enroll = () => {
         <form onSubmit={(e) => e.preventDefault()} className="form-container">
             <h2 className="form-header">Patient Enrollment</h2>
 
-            {status.success && (
+             {status.success && (
                 <NoticeBox title="Success" success>
                     Patient enrolled successfully!
                 </NoticeBox>
