@@ -18,7 +18,10 @@
     "@dhis2/app-runtime": "^3.11.2",
     "@dhis2/ui": "^9.13.0",
     "axios": "^1.7.7",
+    "dotenv": "^16.4.5",
+    "path": "^0.12.7",
     "react-router-dom": "^6.28.0",
-    "react-select": "^5.8.3"
+    "react-select": "^5.8.3",
+    "stream": "^0.0.3"
   }
 }
