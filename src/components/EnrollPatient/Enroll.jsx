@@ -4,7 +4,7 @@ import { Input, NoticeBox, Button } from "@dhis2/ui";
 import { enrollPatient } from "./Api";
 import "./Enroll.css";
 import { useDataQuery } from "@dhis2/app-runtime";
-require('dotenv').config();
+
 // Error messages centralized for reusability
 const ERROR_MESSAGES = {
     MISSING_FIELDS: "Please fill all fields before enrolling.",
@@ -121,69 +121,6 @@ const Enroll = () => {
 
             if (response) {
                 setStatus({ success: true, error: "", loading: false });
-                //sending message
-
-                require("dotenv").config(); // Load environment variables
-
-                const sendMessage = async (patientName, patientPhoneNumber) => {
-                    if (!patientName || !patientPhoneNumber) {
-                        console.error("Patient name and phone number are required.");
-                        return;
-                    }
-                
-                    // Load environment variables
-                    const apiKey = process.env.REACT_APP_KEY;
-                    const password = process.env.REACT_SMS_PASSWORD;
-                    const senderName = process.env.REACT_SMS_SENDER;
-                
-                    // Validate environment variables
-                    if (!apiKey || !password || !gatewayUrl || !senderName) {
-                        console.error("Environment variables are missing. Check your .env file.");
-                        return;
-                    }
-                
-                    // Construct the message
-                    const message = `Hello ${patientName}, you have an appointment.`;
-                
-                    // Prepare form data
-                    const formdata = new FormData();
-                    formdata.append("api_key", apiKey);
-                    formdata.append("password", password);
-                    formdata.append("text", message);
-                    formdata.append("numbers", patientPhoneNumber); // Dynamically set phone number
-                    formdata.append("from", senderName);
-                
-                    // Configure request options
-                    const requestOptions = {
-                        method: "POST",
-                        body: formdata,
-                        redirect: "follow",
-                    };
-                
-                    try {
-                        // Send SMS request
-                        const response = await fetch(gatewayUrl, requestOptions);
-                        if (response.ok) {
-                            const result = await response.text();
-                            console.log("Message sent successfully:", result);
-                        } else {
-                            console.error("Failed to send message. Status:", response.status);
-                        }
-                    } catch (error) {
-                        console.error("Error sending message:", error);
-                    }
-                };
-                
-               
-                
-                sendMessage(patient.name, patient.phoneNumber);
-                
-
-sendMessage(patient.name, patient.phoneNumber);
-
-                
-
-
             } else {
                 setStatus({ success: false, error: ERROR_MESSAGES.UNEXPECTED_RESPONSE, loading: false });
             }
@@ -200,7 +137,7 @@ sendMessage(patient.name, patient.phoneNumber);
         <form onSubmit={(e) => e.preventDefault()} className="form-container">
             <h2 className="form-header">Patient Enrollment</h2>
 
-            {status.success && (
+             {status.success && (
                 <NoticeBox title="Success" success>
                     Patient enrolled successfully!
                 </NoticeBox>
