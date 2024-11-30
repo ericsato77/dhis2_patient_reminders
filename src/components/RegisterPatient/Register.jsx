@@ -28,7 +28,7 @@ const Register = () => {
 
   const [formData, setFormData] = useState(initialFormData);
   const [orgUnits, setOrgUnits] = useState([]);
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoadingPatient] = useState(false);
   const [enrollmentSuccess, setEnrollmentSuccess] = useState(false);
 
   const { loading: orgLoading, error, data } = useDataQuery(orgUnitQuery);
@@ -44,17 +44,17 @@ const Register = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setLoading(true);
-    setEnrollmentSuccess(false);
+    setLoadingPatient(true);
+    
 
     try {
       const response = await registerPatient(formData);
       if (response.status === "OK") setEnrollmentSuccess(true);
-    } catch (err) {
-      console.error("Error registering patient:", err);
+    } catch (error) {
+      console.error("Error registering patient:", error);
       alert("Error registering patient");
     } finally {
-      setLoading(false);
+      setLoadingPatient(false);
     }
   };
 
