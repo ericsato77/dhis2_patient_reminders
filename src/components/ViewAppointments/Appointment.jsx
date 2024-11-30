@@ -76,9 +76,9 @@ function AppointmentTable() {
                 <tbody>
                     {appointments.map((appointment, index) => (
                         <tr key={index}>
-                            <td>{appointment.firstName || '-'}</td>
-                            <td>{appointment.lastName || '-'}</td>
-                            <td>{appointment.programEnrolled || '-'}</td>
+                            <td>{appointment.firstName || '--'}</td>
+                            <td>{appointment.lastName || '--'}</td>
+                            <td>{appointment.programEnrolled || '--'}</td>
                             <td>
                                 <select
                                     value={appointment.appointmentType}
