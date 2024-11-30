@@ -16,7 +16,7 @@ function AppointmentTable() {
 
     const handleAddAppointment = () => {
         setAppointments([
-            ...appointments,
+             appointments,
             { firstName: '', lastName: '', programEnrolled: '', appointmentType: '', schedule: '' },
         ]);
     };
