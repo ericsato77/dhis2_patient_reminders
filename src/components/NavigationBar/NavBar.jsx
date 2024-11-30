@@ -13,17 +13,9 @@ function NavBar() {
       <NavLink to="/enroll" activeClassName="active-link" className="nav-link enroll">
         Enroll Patient
       </NavLink>
-      
-      <NavLink to="/view-enrolled" activeClassName="active-link" className="nav-link viewenrolled">
-        Enrolled Patients
-      </NavLink>
 
       <NavLink to="/view-enrolled" activeClassName="active-link" className="nav-link enrolled">
         Registered Patients
-      </NavLink>
-
-      <NavLink to="/view-appointments" activeClassName="active-link" className="nav-link schedule">
-        Schedule Appointments
       </NavLink>
       
       <NavLink to="/view-appointments" activeClassName="active-link" className="nav-link appointments">

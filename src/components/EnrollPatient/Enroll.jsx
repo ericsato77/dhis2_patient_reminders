@@ -147,7 +147,7 @@ const Enroll = () => {
                 var formdata = new FormData();
                 formdata.append("api_key", "Ph4i9BVUxXknLl6hjUf2");
                 formdata.append("password", "Zione@062000");
-                formdata.append("text", `Hello ${selectedPatientDetails.firstName} ${selectedPatientDetails.lastName}, you have been enrolled to group4 health program`);
+                formdata.append("text", `Hello ${selectedPatientDetails.firstName} ${selectedPatientDetails.lastName}, you have an appointment tomorrow at Chikanda clinic.Dont miss it!!`);
                 formdata.append("numbers", selectedPatientDetails.phone);
                 formdata.append("from", "WGIT");
 
