@@ -38,9 +38,11 @@ export const fetchPrograms = async () => {
 export const enrollPatient = async (enrollmentData) => {
   try {
     const response = await api.post("/enrollments", enrollmentData);
+   console.log(enrollmentData);
+   
     return response.data;
   } catch (error) {
-    console.error("Error enrolling patient:", error);
+    console.error("Error enrolling patient:", error.response?.data || error.message);
     throw error;
   }
 };
