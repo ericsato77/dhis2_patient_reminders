@@ -37,8 +37,8 @@ const AppointmentTable = () => {
   };
 
   const handleInputChange = (index, field, value) => {
-    const updatedAppointments = appointments.map((appointment, i) =>
-      i === index ? { ...appointment, [field]: value } : appointment
+    const updatedAppointments = appointments.map((appointment, x) =>
+      x === index ? { ...appointment, [field]: value } : appointment
     );
     setAppointments(updatedAppointments);
   };
